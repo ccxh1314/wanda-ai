@@ -1,0 +1,117 @@
+.delete{
+    width: 680px;
+    height: 540px;
+    border-radius: 4px;
+    border: 1px solid #CCCCCC;
+}
+.delete .delete-top{
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    border-bottom: 1px solid #CCCCCC;
+}
+.delete .delete-top .img{
+    width: 32px;
+    height: 17px;
+    display: inline-block;
+}
+.delete .delete-top .img-left{
+    background: url("../images/left.png") no-repeat;
+    margin-right: 12px;
+    background-size:  100% 100%;
+}
+.delete .delete-top .img-right{
+    background: url("../images/right.png") no-repeat;
+    margin-left: 12px;
+    background-size:  100% 100%;
+}
+.delete .delete-top .font-top{
+    font-size: 20px;
+    color: #398BFB;
+}
+.delete .delete-bottom{
+    margin:0 auto;
+}
+.delete .delete-bottom .bottom-cloud{
+    width: 580px;
+    margin:0 auto;
+    margin-top: 29px;
+}
+.delete .delete-bottom .bottom-cloud .font-bottom{
+    font-size: 16px;
+}
+.delete .delete-bottom .bottom-cloud .select-bottom{
+    background: #F1F7FF;
+    margin-top: 17px;
+}
+.delete .delete-bottom .bottom-cloud .select-bottom ul{
+    padding-top: 29px;
+    margin-left: 41px;
+}
+.delete .delete-bottom .bottom-cloud .select-bottom ul #scollbar{
+    position: relative !important;
+    margin-top: 19px;
+    width: 511px;
+    height: 213px;
+    overflow-y: hidden !important;
+}
+.delete .delete-bottom .bottom-cloud .select-bottom ul li{
+    margin-top: 19px;
+    color: #666666;
+    font-size: 14px;
+}
+.delete .delete-bottom .bottom-cloud .select-bottom ul .li-1{
+    margin-top: 0;
+    color: black;
+}
+.delete .delete-bottom .bottom-cloud .select-bottom ul li input{
+    width: 13px;
+    height: 13px;
+    border: 1px solid #888888;
+}
+.delete .delete-bottom .bottom-cloud .select-bottom ul li span{
+    margin-left: 9px;
+}
+.delete .delete-bottom .bottom-cloud .select-bottom ul .li-last{
+    padding-bottom: 24px;
+}
+.delete .delete-bottom .bottom-cloud .select-bottom ul li .la-1{
+    color: #FD8900;
+ }
+.delete .delete-bottom .bottom-cloud .select-bottom ul li .la-2{
+    color: #00A277;
+}
+.delete .delete-bottom .bottom-cloud .button-bottom{
+    text-align: right;
+    margin-top: 25px;
+}
+.delete .delete-bottom .bottom-cloud .button-bottom button{
+    width: 119px;
+    height: 40px;
+    vertical-align: center;
+    text-align: center;
+    border-radius: 6px;
+    outline: none;
+    font-size: 16px;
+}
+.delete .delete-bottom .bottom-cloud .button-bottom .btn1{
+    border: 1px solid #398BFB;
+    color: #398BFB;
+    background: white;
+}
+.delete .delete-bottom .bottom-cloud .button-bottom .btn1:hover{
+    background: #398BFB;
+    color: white;
+    transition: .3s;
+}
+.delete .delete-bottom .bottom-cloud .button-bottom .btn2{
+    margin-left: 25px;
+    border: 1px solid #398BFB;
+    color: white;
+    background: #398BFB;
+}
+.delete .delete-bottom .bottom-cloud .button-bottom .btn2:hover{
+    background: white;
+    color: #398BFB;
+    transition: .3s;
+}
