@@ -16,6 +16,11 @@ import axios from './plugin/axios';
 import common from './filters/formDate';
 Vue.prototype.common = common;
 
+// //
+// import transform from './filters/transform'
+// Vue.prototype.transform = transform;
+
+
 //配置baseUrl
 // Vue.prototype.baseUrl = require('../congig/config').active;
 

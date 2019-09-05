@@ -1,0 +1,162 @@
+html{
+    background: #F7F7F7;
+}
+.main .main-bottom .search-result .result-left p{
+    color: #666666;
+    display: inline-block;
+    margin-left: 24px;
+}
+.main .main-bottom .search-result .result-left p i{
+    font-style: normal;
+}
+.main .main-bottom .search-content{
+    height: 2073px;
+    clear: both;
+    background: white;
+    padding: 20px 20px 60px 20px;
+    margin-top: 24px;
+    border-radius: 8px;
+    border: 1px solid #D8D8D8;
+}
+.main .main-bottom .search-content .se-cloud{
+    width: 100%;
+}
+.main .main-bottom .search-content .con-left{
+    float: left;
+    width: 20%;
+}
+.main .main-bottom .search-content .con-left .left-all{
+    padding-right: 20px;
+}
+.main .main-bottom .search-content .con-left .con-left-same p img{
+    width: 24px;
+    height: 24px;
+    vertical-align: -5px;
+}
+.main .main-bottom .search-content .con-left .con-left-same p label{
+    font-size: 18px;
+    margin-left: 5px;
+}
+.main .main-bottom .search-content .con-left .con-left1 ul li{
+    margin-top: 19px;
+    cursor: pointer;
+}
+.main .main-bottom .search-content .con-left .con-left1 ul li span{
+    color: #666666;
+    margin-left: 6px;
+}
+.main .main-bottom .search-content .con-left .con-left1 ul li .span-change{
+    color: #1670EB;
+}
+.i-change{
+    background: url("../images/selected.png") no-repeat;
+    background-size: 100% 100%;
+    border: none;
+}
+.bg-change{
+    width: 11px;
+    height: 11px;
+    border: 1px solid #888888;
+    vertical-align: -1px;
+}
+.main .main-bottom{
+    text-align: left;
+}
+.main .main-bottom .search-content .con-left .con-left2{
+    margin-top: 40px;
+}
+.main .main-bottom .search-content .con-left .con-left2 div{
+    margin-top: 20px;
+    color: #1670EB;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.main .main-bottom .search-content .con-right{
+    float: right;
+    width: 80%;
+}
+.main .main-bottom .search-content .con-right .con-cloud{
+    position: relative !important;
+    height: 2073px;
+    overflow-y: hidden !important;
+    border-left: 1px solid #D8D8D8;
+    padding-left: 30px;
+}
+.main .main-bottom .search-content .con-right .con-cloud .cloud-mud{
+    padding-bottom: 20px;
+}
+.main .main-bottom .search-content .con-right .con-cloud .cloud-mud .mud-1{
+    cursor: default;
+}
+.main .main-bottom .search-content .con-right .con-cloud .cloud-mud .mud-1 label{
+    color: #00A178;
+    margin-left: 2px;
+    font-size: 16px;
+}
+ .mud-change{
+    color: #1670EB;
+}
+.main .main-bottom .search-content .con-right .con-cloud .cloud-mud .mud-1 span{
+    color: #00A178;
+    margin-left: 30px;
+    font-size: 16px;
+}
+.main .main-bottom .search-content .con-right .con-cloud .cloud-mud .mud-2{
+    background: #F7F7F7;
+    margin-top: 9px;
+    border-top: 2px solid #00A178;
+    padding: 16px 17px 16px 20px;
+    line-height: 25px;
+}
+.main .main-bottom .search-content .con-right .con-cloud .cloud-mud .mud-2 .mud-2-1{
+    margin-top: 23px;
+}
+.main .main-bottom .search-content .con-right .con-cloud .cloud-mud .mud-2 div span{
+    margin-right: 65px;
+}
+.main .main-bottom .search-content .con-right .con-cloud .cloud-mud .mud-2 div span i{
+    font-style: normal;
+}
+.main .main-bottom .search-content .con-right .con-cloud .cloud-mud .mud-2 .mud-2-1 div{
+    float: right;
+}
+.main .main-bottom .search-content .con-right .con-cloud .cloud-mud .mud-2 .mud-2-1 div button{
+    margin-right: 40px;
+    padding: 2px 6px 3px 6px;
+}
+.main .main-bottom .search-content .con-right .con-page{
+    padding: 20px 0 20px 0;
+}
+.main .main-bottom .search-content .con-right .con-page ul{
+    text-align: right;
+}
+.main .main-bottom .search-content .con-right .con-page ul li{
+    display: inline-block;
+}
+.main .main-bottom .search-content .con-right .con-page ul li a{
+    font-size: 12px;
+    color: #666666;
+    text-decoration: none;
+    padding: 2px 7px 2px 7px;
+    border: 1px solid #D8D8D8;
+    border-radius: 4px;
+}
+.main .main-bottom .search-content .con-right .con-page ul li a:hover{
+    background: #398BFB;
+    color: white;
+}
+.main .main-bottom .search-content .con-right .con-page ul .page-list a{
+    border: none;
+}
+.main .main-bottom .search-content .con-right .con-page ul .page-list a:hover{
+    background: none;
+    color:  #666666;
+}
+.main .main-bottom .search-content .con-right .con-page ul li input{
+    border-radius: 4px;
+    width: 20px;
+    height: 14px;
+    padding: 3px;
+    border: 1px solid #D8D8D8;
+}
+

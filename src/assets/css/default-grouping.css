@@ -1,0 +1,135 @@
+html{
+    background: #F5F5F5;
+}
+.main{
+    padding: 20px 30px 50px 30px;
+}
+.main .main-top{
+    height: 47px;
+}
+.main .main-top div{
+    float: left;
+}
+.main .main-top div span{
+    display: block;
+}
+.main .main-top div span label{
+    font-size: 16px;
+}
+.main .main-top div span i{
+    font-size: 16px;
+    color: #1061D1;
+}
+.main .main-top p{
+    float: right;
+    margin-top: 3px;
+}
+.main .main-top p button{
+    padding: 10px 25px;
+}
+.main .main-top p .btn2{
+    margin-right: 15px;
+}
+.main .main-bottom{
+    border: 1px solid #D8D8D8;
+    border-radius: 8px;
+    padding: 22px 32px 32px 32px;
+    background: white;
+    margin-top: 13px;
+}
+.main .main-bottom .group-cloud{
+    background: #F1F7FF;
+    padding: 30px 60px;
+    margin-top: 10px;
+}
+.main .main-bottom .group-cloud .grouping .group-in input{
+    border: 1px solid #D8D8D8;
+    border-radius: 4px;
+    text-indent: 15px;
+    width: 206px;
+}
+.main .main-bottom .group-cloud .grouping .group-box1{
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #398BFB;
+}
+.main .main-bottom .group-cloud .grouping .group-box .box-p1{
+    height: 40px;
+    margin-top: 25px;
+}
+.main .main-bottom .group-cloud .grouping .group-box .box-p2{
+    margin-top: 16px;
+    height: 40px;
+}
+.main .main-bottom .group-cloud .grouping .group-box .box-p p{
+    float: left;
+}
+.main .main-bottom .group-cloud .grouping .group-box .box-p .box-p1-1 span{
+    width: 100px;
+}
+.main .main-bottom .group-cloud .grouping .group-box .box-p .box-p1-1 span img{
+    width: 26px;
+    height: 26px;
+    vertical-align: -6px;
+}
+.main .main-bottom .group-cloud .grouping .group-box .box-p .box-p1-1 span i{
+    font-size: 16px;
+    margin-left: 3px;
+}
+.main .main-bottom .group-cloud .grouping .group-box .box-p .box-p1-1 select{
+    text-indent: 5px;
+    outline: none;
+    width: 250px;
+    height: 40px;
+    margin-left: 30px;
+}
+.main .main-bottom .group-cloud .grouping .group-box select,input{
+    border-radius: 4px;
+    border: 1px solid #D8D8D8;
+    height: 40px;
+}
+.main .main-bottom .group-cloud .grouping .group-box .box-p .box-p1-2{
+    float: right;
+}
+.main .main-bottom .group-cloud .grouping .group-box .box-p .box-p1-2 .p1-2-1{
+    width: 100px;
+}
+.main .main-bottom .group-cloud .grouping .group-box .box-p .box-p1-2 .p1-2-1 img{
+    width: 26px;
+    height: 26px;
+    vertical-align: -6px;
+}
+.main .main-bottom .group-cloud .grouping .group-box .box-p .box-p1-2 .p1-2-1 i{
+    margin-left: 3px;
+    font-size: 16px;
+}
+.main .main-bottom .group-cloud .grouping .group-box .box-p .box-p1-2 .p1-2-2 label{
+    margin-left: 30px;
+    color: #3F8FFB;
+}
+.main .main-bottom .group-cloud .grouping .group-box .box-p .box-p1-2 .p1-2-2 select{
+    width: 117px;
+    margin-left: 10px;
+    padding-left: 3px;
+    outline: none;
+}
+.main .main-bottom .group-cloud .grouping .group-box .box-p .box-p1-2 .p1-2-2 input{
+    width: 270px;
+    text-indent: 10px;
+    margin-left: 5px;
+    height: 38px;
+}
+.group-cloud .grouping .group-box .box-p2 img{
+    width: 29px;
+    height: 29px;
+    margin-right: 23px;
+}
+.main .main-bottom .group-cloud .grouping .group-box .box-p2 .box-p1-1 span img{
+    margin: 0;
+    margin-left: 5px;
+}
+.main .main-bottom .group-cloud .grouping .group-box .box-p2 .box-p1-1 span .p1-1-img{
+    margin-left: 25px;
+}
+.main .main-bottom .group-cloud .grouping .group-box .box-p2 .box-p1-2 .p1-2-1 img{
+    margin: 0;
+}

@@ -135,6 +135,11 @@
     margin-top: 0;
 }
 
+.main .main-left .search-bottom .search-condition ul .li-1 span {
+    color: #398BFB;
+    cursor: pointer;
+}
+
 .main .main-left .search-bottom .condition-write {
     margin-top: 37px;
     width: 74.5%;

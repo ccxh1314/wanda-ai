@@ -1,0 +1,183 @@
+html{
+    background: #F5F5F5;
+}
+.main{
+    padding: 20px 30px 39px 30px;
+}
+.main .main-top p label{
+    font-size: 16px;
+}
+.main .main-top p span{
+    color: #1061D1;
+    font-size: 16px;
+}
+.main .main-top div{
+    position: relative;
+    margin-top: 20px;
+}
+.main .main-top div label{
+    font-size: 16px;
+}
+.main .main-top div input{
+    width: 204px;
+    height: 38px;
+    text-indent: 10px;
+    border: 1px solid #D8D8D8;
+    border-radius: 4px;
+}
+.main .main-top div button{
+    height: 38px;
+    line-height: 26px;
+    width: 91px;
+    margin-left: 5px;
+}
+/* .main #scrollbar{
+    position: relative !important;
+    height: 502px;
+    overflow-y: hidden !important;
+} */
+.main #viewTable{
+    height: 500px;
+    position: relative;
+    margin-top: 25px;
+    border-radius: 4px;
+    min-width: 700px;
+    border: 1px solid #D6D9E3;
+}
+.main .main-center .fixed-header-table{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+.main .main-center table{
+    width: 100%;
+    height: 100%;
+    background: white;
+    table-layout: fixed;
+}
+/* .main .main-center table .cl-change{
+    display: none;
+} */
+.main .main-center table tr th,td{
+    text-align: center;
+    border: 1px solid #D6D9E3;
+}
+.main .main-center table tr th{
+    background: #F7F9FA;
+    border-top: none;
+    border-left: none;
+    padding: 12px;
+    position: relative;
+    z-index: 6;
+}
+.main .main-center table tr .td-last{
+    color: #D8D8D8;
+}
+.main .main-center table tr td{
+    padding: 0 15px 0 15px;
+    
+    height: 50px;
+    
+    cursor: pointer;
+    border-left: none;
+    position: relative
+}
+.main .main-center table tr .til-show a{
+    width: 100%;
+    color: black;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.main .main-center table tr .wid-dif{
+    width: 27%;
+}
+.main .main-center table tr td img{
+    width: 16px;
+    height: 16px;
+    vertical-align: -3px;
+}
+.main .main-center table tr td .img-up{
+    display: none;
+}
+.main .main-center table tr td label{
+    margin-left: 3px;
+}
+.main .main-center table tr td a{
+    color: #398BFB;
+    text-decoration: none;
+}
+.main .main-center table tr td a::after{
+    content: attr(title);
+}
+.main .main-center table tr td .del-tr{
+    color: #FB8717;
+}
+.main .main-center table tr td i{
+    width: 11px;
+    height: 11px;
+    border: 1px solid #888888;
+    vertical-align: -2px;
+}
+.i-change{
+    background: url("../images/selected.png") no-repeat;
+    background-size: 100% 100%;
+    border: none;
+}
+.main .main-center table .bg-green{
+    background: #F1F7FF;
+}
+.main .main-center table .cl-change{
+    background: white;
+}
+.main .main-center table .tr-change{
+    background: #D6E8FF;
+}
+.alert-box3{
+    width: 420px;
+    height: 235px;
+    border-radius: 4px;
+    display: none;
+}
+.alert-box3 .div1{
+    text-align: center;
+    padding: 72px 0 56px 0;
+    font-size: 20px;
+}
+.alert-box3 .div2{
+    text-align: center;
+}
+.alert-box3 .div2 button{
+    width: 118px;
+    height: 38px;
+}
+.alert-box3 .div2 .btn1{
+    margin-left: 30px;
+}
+.main .main-center table tr td a::after {
+    content: none; 
+}
+.main .main-center table tr .til-show-change{
+    background: #D6E8FF;
+}
+.main .main-center table tr .bgc-change1{
+    background: white;
+    border-bottom: none;
+}
+.main .main-center table tr .bgc-change2{
+    background: #F5F5F5;
+    border-bottom: none;
+    border-top: none;
+}
+.newDiv{
+    display: inline-block;
+    width: 340px;
+    background: white;
+    padding: 25px;
+    position: absolute;
+    z-index: 666;
+    text-align: left;
+    line-height: 23px;
+}
+

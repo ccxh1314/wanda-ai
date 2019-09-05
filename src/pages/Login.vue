@@ -72,6 +72,7 @@
     },
         methods:{
             login(){
+             
                 axios({
                     url:'http://10.1.192.118:9901/login/login',
                     method:'post',
@@ -83,6 +84,12 @@
                         return
                     }
                     if(res.data.token && res.data.tokenHead){
+                        const loading = this.$loading({
+                         lock: true,
+                         text: '加载中',
+                         spinner: 'el-icon-loading',
+                         background: 'rgba(0, 0, 0, 0.7)'
+                         });
                         let user_token  = [{
                             "tokenHead":res.data.tokenHead,
                             "token":res.data.token
@@ -90,8 +97,7 @@
                         localStorage.setItem("user",JSON.stringify(user_token))
                         this.message = "登录成功"
                             this.$router.push('/retrieval')
-                        // setTimeout(function(){
-                        // },1000)
+                            loading.close();
                     }else{
                         this.message = res.data
                     }
@@ -138,205 +144,4 @@
     }
 </script>
 
-<style scoped>
-/* @import "../assets/css/login.css"; */
-.main{
-    background: url("../assets/images/login-bg.png") no-repeat;
-    background-size: 100% 100%;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-}
-.main .main-left{
-    width: 710px;
-    height: 550px;
-    float: left;
-    position: relative;
-    top: 10%;
-    left: 80px;
-}
-.main .main-left .left-center,.left-top,.left-bottom{
-    width: 100%;
-    height: 100%;
-}
-.main .main-left .left-center{
-    text-align: center;
-    position: relative;
-    top: 0;
-}
-.main .main-left .left-center .active-img2{
-    width: 300px;
-    height: 280px;
-    position: absolute;
-    z-index: 6;
-    left: 215px;
-    top: -30px;
-}
-.main .main-left .left-top{
-    position: absolute;
-    top: 0;
-}
-.main .main-left .left-top img{
-    position: absolute;
-}
-.main .main-left .left-top .static-img1{
-    top: 40px;
-    left: 40px;
-}
-.main .main-left .left-top .static-img2{
-    top: 108px;
-    left: 152px;
-}
-.main .main-left .left-top .static-img3{
-    top: 12px;
-    right: 147px;
-}
-.main .main-left .left-top .static-img4{
-    top: 154px;
-    right: 146px;
-}
-.main .main-left .left-top .static-img5{
-    top: 82px;
-    right: 52px;
-}
-.main .main-left .left-bottom{
-    position: absolute;
-    bottom: 0;
-}
-.main .main-left .left-bottom img{
-    position: absolute;
-}
-.main .main-left .left-bottom .static-img6{
-    bottom: 164px;
-    left: 40px;
-}
-.main .main-left .left-bottom .static-img7{
-    bottom: 65px;
-    left: 129px;
-}
-.main .main-left .left-bottom .static-img8{
-    bottom: 14px;
-    left: 241px;
-}
-.main .main-left .left-bottom .static-img9{
-    bottom: 0;
-    right: 295px;
-}
-.main .main-left .left-bottom .static-img10{
-    bottom: 35px;
-    right: 39px;
-}
-.main .login-box{
-    float: right;
-    width: 417px;
-    height: 435px;
-    background: #113E9E;
-    border-radius: 4px;
-    border-bottom: 1px solid #2A78BB;
-    border-left: 1px solid #2A78BB;
-    position: relative;
-    z-index: 1;
-    top: 20%;
-    right: 120px;
-}
-.main .login-box ul{
-    padding: 45px 50px 45px 50px;
-}
-.main .login-box ul li{
-    position: relative;
-    width: 100%;
-}
-.main .login-box ul .list1 img{
-    width: 100%;
-    height: 27px;
-}
-.main .login-box ul .list2 img{
-    width: 100%;
-    height: 30px;
-    opacity: .6;
-}
-.main .login-box ul .list2{
-    margin-top: 5px;
-}
-.main .login-box ul .list3{
-    height: 60px;
-    text-align: left;
-    line-height: 60px;
-    background: url("../assets/images/login-bg1.png") no-repeat;
-    background-size: 100% 100%;
-}
-.main .login-box ul .list3 input{
-    width: 313px;
-    height: 48px;
-    border: none;
-    text-indent: 20px;
-    background: none;
-    color: white;
-}
-.main .login-box ul .list3 input::-webkit-input-placeholder{
-    color: #45B1F6;
-}
-.main .login-box ul .list3 input::-ms-input-placeholder{
-    color: #45B1F6;
-}
-.main .login-box ul .list3 input::-moz-placeholder{
-    color: #45B1F6;
-}
-.main .login-box ul .list3 span{
-    display: inline-block;
-    width: 27px;
-    height: 15px;
-    position: absolute;
-    top: 23px;
-    right: 18px;
-    cursor: pointer;
-}
-.main .login-box ul .list3 #list-img1{
-    display: block;
-    background: url("../assets/images/eye-close.png");
-    background-size: 100% 100%;
-}
-.main .login-box ul .list3 #list-img2{
-    display: none;
-    background: url("../assets/images/eye-open.png");
-    background-size: 100% 100%;
-}
-.main .login-box ul .list4{
-    margin-top: 13px;
-}
-.main .login-box ul li i{
-    display: inline-block;
-    width:13px;
-    height: 13px;
-    background: #325A9B;
-    border: 1px solid #15A6EE;
-    position: relative;
-    top: 2px;
-    margin-left: 3px;
-}
-.main .login-box ul li .i-change{
-    background: url("../assets/images/gou.png") no-repeat;
-    background-size: 100% 100%;
-}
-.main .login-box ul li label{
-    color: #15A6EE;
-    margin-left: 5px;
-}
-.main .login-box ul li button{
-    margin-top: 35px;
-    height: 48px;
-    width: 100%;
-    border: 1px solid #2EEEF5;
-    color: #2EEEF5;
-    border-radius: 5px;
-    background: #0C5AB6;
-}
-.main .login-box ul li button:hover{
-    transition: .3s;
-    color: #0C5AB6;
-    background: #2EEEF5;
-}
-
-
-
-</style>
+<style scoped src="../assets/css/login.css"></style>
