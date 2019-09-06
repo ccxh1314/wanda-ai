@@ -88,10 +88,14 @@
                                 <a class="a1" @click="cut">-</a>
                             </p>
                             <input class="in1" type="text" ref="init" id="init" v-model="searchInfo" placeholder="请选择字段" style="text-indent:5px;" disabled/>
-                            <select class="se1">
+                            <select class="se1" ref="include1" id="include1">
+                                <option>包含</option>
+                                <option>不包含</option>
                                 <option>等于</option>
-                                <option>小于</option>
+                                <option>大于等于</option>
+                                <option>小于等于</option>
                                 <option>大于</option>
+                                <option>小于</option>
                             </select>
                             <input class="in2" type="text" ref="initValue" id="initValue" placeholder="请输入检索值" style="text-indent:5px;" />
                             <select class="se2">
@@ -110,10 +114,14 @@
                              placeholder="请选择字段"
                              style="text-indent:5px;" 
                              disabled/>
-                            <select class="se1"> 
+                            <select class="se1" ref="include2" id="include2"> 
+                                <option>包含</option>
+                                <option>不包含</option>
                                 <option>等于</option>
-                                <option>小于</option>
+                                <option>大于等于</option>
+                                <option>小于等于</option>
                                 <option>大于</option>
+                                <option>小于</option>
                             </select>
                             <input class="in2" type="text" 
                              placeholder="请输入检索值"  
@@ -470,6 +478,7 @@ export default {
       },
     //确定并开始搜索
       startSearch(){
+            // console.log(this.$refs.include1.options[this.$refs.include1.selectedIndex].value)
             if(this.$refs.table.value == ""){
                     this.$message({
                                     message: '请选择表名',
@@ -492,13 +501,16 @@ export default {
                                 });
                     return
             }else if(!this.$refs.collection || !this.$refs.box || !this.$refs.boxValue || this.$refs.boxValue.length == 0){
-                let initValue = this.$refs.initValue.value;
-                let table = transform(this.$refs.table.value);
-                let init = transform(this.$refs.init.value);
+                //   console.log(this.$refs.include1.options[this.$refs.include1.selectedIndex].value)
+                let computeValue = this.$refs.include1.options[this.$refs.include1.selectedIndex].value;
 
-                let queryField = `${table}.${init}`
-                // console.log(queryField)
-                // console.log(initValue)
+                let initValue = this.$refs.initValue.value;
+                let table = this.$refs.table.value;
+                let init = this.$refs.init.value;
+
+                let queryField = `${transform(table)}.${transform(init)}`
+                console.log(queryField)
+                console.log(initValue)
                 const loading = this.$loading({
                 lock: true,
                 text: '加载中',
@@ -508,7 +520,7 @@ export default {
                 axios({
                     url:'http://10.1.192.118:9901/senior/gjsearch',
                     method:'post',
-                    data:{"maplist":[{"检索字段":queryField,"检索值":initValue}]}
+                    data:{"maplist":[{"检索字段":queryField,"运算符":computeValue,"检索值":initValue}]}
                 }).then(res => {
                     // console.log(res)
                     this.seniorSearchData = res.data;
@@ -524,7 +536,10 @@ export default {
                 
                 
             }else if(this.$refs.boxValue.length == this.$refs.collection.length == this.$refs.box.length == 1){
-                    // console.log(document.querySelector("#se2").children)
+                // console.log(this.$refs.include2[0].options[this.$refs.include2[0].selectedIndex].value)
+                    let computeValue = this.$refs.include1.options[this.$refs.include1.selectedIndex].value;        
+                    let computeValue1 = this.$refs.include2[0].options[this.$refs.include2[0].selectedIndex].value;        
+
                     let relate = ""
                             switch(this.$refs.se3[0].options[this.$refs.se3[0].selectedIndex].value){
                                     case "并含" :
@@ -539,15 +554,15 @@ export default {
                 let initValue = this.$refs.initValue.value;
                 let table = this.$refs.table.value;
                 let init = this.$refs.init.value;
-                let queryField = `${table}.${init}`
+                let queryField = `${transform(table)}.${transform(init)}`
 
                 let arr1 = this.$refs.boxValue;
                 let arr2 = this.$refs.collection;
                 let arr3 = this.$refs.box;
-                let queryField1 = `${arr2[0].value}.${arr3[0].value}`
-                // console.log(queryField)
-                // console.log(queryField1)
-                //没输入字符警告
+                let queryField1 = `${transform(arr2[0].value)}.${transform(arr3[0].value)}`
+                console.log(queryField)
+                console.log(queryField1)
+                // 没输入字符警告
                 this.warning(this.$refs.collection,this.$refs.box,this.$refs.boxValue)
                 const loading = this.$loading({
                 lock: true,
@@ -559,8 +574,8 @@ export default {
                     url:'http://10.1.192.118:9901/senior/gjsearch',
                     method:'post',
                     data:{"maplist":[
-                                        {"检索字段":queryField,"检索值":initValue},
-                                        {"检索字段":queryField1,"检索值":arr1[0].value}
+                                        {"检索字段":queryField,"运算符":computeValue,"检索值":initValue},
+                                        {"检索字段":queryField1,"运算符":computeValue1,"检索值":arr1[0].value}
                                     ],
                           "stringList":[relate]          
                                     }
@@ -575,6 +590,12 @@ export default {
                     }
                 })
         }else if(this.$refs.boxValue.length == 2){
+                //    console.log(this.$refs.include2[0].options[this.$refs.include2[0].selectedIndex].value)
+                //    console.log(this.$refs.include2[1].options[this.$refs.include2[1].selectedIndex].value)
+                let computeValue = this.$refs.include1.options[this.$refs.include1.selectedIndex].value;        
+                let computeValue1 = this.$refs.include2[0].options[this.$refs.include2[0].selectedIndex].value; 
+                let computeValue2 = this.$refs.include2[1].options[this.$refs.include2[1].selectedIndex].value; 
+
                  let relate = ""
                             switch(this.$refs.se3[0].options[this.$refs.se3[0].selectedIndex].value){
                                     case "并含" :
@@ -597,13 +618,13 @@ export default {
                 let initValue = this.$refs.initValue.value;
                 let table = this.$refs.table.value;
                 let init = this.$refs.init.value;
-                let queryField = `${table}.${init}`
+                let queryField = `${transform(table)}.${transform(init)}`
 
                 let arr1 = this.$refs.boxValue;
                 let arr2 = this.$refs.collection;
                 let arr3 = this.$refs.box;
-                let queryField1 = `${arr2[0].value}.${arr3[0].value}`
-                let queryField2 = `${arr2[1].value}.${arr3[1].value}`
+                let queryField1 = `${transform(arr2[0].value)}.${transform(arr3[0].value)}`
+                let queryField2 = `${transform(arr2[1].value)}.${transform(arr3[1].value)}`
 
                 // let querystring = `${initValue}[${table}表 : ${init}]`
                 //没输入字符警告
@@ -618,9 +639,9 @@ export default {
                     url:'http://10.1.192.118:9901/senior/gjsearch',
                     method:'post',
                     data:{"maplist":[
-                                        {"检索字段":queryField,"检索值":initValue},
-                                        {"检索字段":queryField1,"检索值":arr1[0].value},
-                                        {"检索字段":queryField2,"检索值":arr1[1].value}
+                                        {"检索字段":queryField,"运算符":computeValue,"检索值":initValue},
+                                        {"检索字段":queryField1,"运算符":computeValue1,"检索值":arr1[0].value},
+                                        {"检索字段":queryField2,"运算符":computeValue2,"检索值":arr1[1].value}
                                     ],
                           "stringList":[relate,relate1]          
                                     }
@@ -636,6 +657,11 @@ export default {
                 })
 
     }else if(this.$refs.boxValue.length == 3){
+                let computeValue = this.$refs.include1.options[this.$refs.include1.selectedIndex].value;        
+                let computeValue1 = this.$refs.include2[0].options[this.$refs.include2[0].selectedIndex].value; 
+                let computeValue2 = this.$refs.include2[1].options[this.$refs.include2[1].selectedIndex].value; 
+                let computeValue3 = this.$refs.include2[2].options[this.$refs.include2[2].selectedIndex].value; 
+
                 let relate = ""
                             switch(this.$refs.se3[0].options[this.$refs.se3[0].selectedIndex].value){
                                     case "并含" :
@@ -667,14 +693,14 @@ export default {
                 let initValue = this.$refs.initValue.value;
                 let table = this.$refs.table.value;
                 let init = this.$refs.init.value;
-                let queryField = `${table}.${init}`
+                let queryField = `${transform(table)}.${transform(init)}`
                 
                 let arr1 = this.$refs.boxValue;
                 let arr2 = this.$refs.collection;
                 let arr3 = this.$refs.box;
-                let queryField1 = `${arr2[0].value}.${arr3[0].value}`
-                let queryField2 = `${arr2[1].value}.${arr3[1].value}`
-                let queryField3 = `${arr2[2].value}.${arr3[2].value}`
+                let queryField1 = `${transform(arr2[0].value)}.${transform(arr3[0].value)}`
+                let queryField2 = `${transform(arr2[1].value)}.${transform(arr3[1].value)}`
+                let queryField3 = `${transform(arr2[2].value)}.${transform(arr3[2].value)}`
                 // let querystring = `${initValue}[${table}表 : ${init}]`
                 //没输入字符警告
                 this.warning(this.$refs.collection,this.$refs.box,this.$refs.boxValue)
@@ -688,10 +714,10 @@ export default {
                     url:'http://10.1.192.118:9901/senior/gjsearch',
                     method:'post',
                     data:{"maplist":[
-                                        {"检索字段":queryField,"检索值":initValue},
-                                        {"检索字段":queryField1,"检索值":arr1[0].value},
-                                        {"检索字段":queryField2,"检索值":arr1[1].value},
-                                        {"检索字段":queryField3,"检索值":arr1[2].value}
+                                        {"检索字段":queryField,"运算符":computeValue,"检索值":initValue},
+                                        {"检索字段":queryField1,"运算符":computeValue1,"检索值":arr1[0].value},
+                                        {"检索字段":queryField2,"运算符":computeValue2,"检索值":arr1[1].value},
+                                        {"检索字段":queryField3,"运算符":computeValue3,"检索值":arr1[2].value}
                                     ],
                           "stringList":[relate,relate1,relate2]          
                                     }
@@ -707,6 +733,12 @@ export default {
                 })
 
     }else if(this.$refs.boxValue.length == 4){
+                let computeValue = this.$refs.include1.options[this.$refs.include1.selectedIndex].value;        
+                let computeValue1 = this.$refs.include2[0].options[this.$refs.include2[0].selectedIndex].value; 
+                let computeValue2 = this.$refs.include2[1].options[this.$refs.include2[1].selectedIndex].value; 
+                let computeValue3 = this.$refs.include2[2].options[this.$refs.include2[2].selectedIndex].value;
+                let computeValue4 = this.$refs.include2[3].options[this.$refs.include2[3].selectedIndex].value;
+
                 let relate = ""
                             switch(this.$refs.se3[0].options[this.$refs.se3[0].selectedIndex].value){
                                     case "并含" :
@@ -747,15 +779,15 @@ export default {
                 let initValue = this.$refs.initValue.value;
                 let table = this.$refs.table.value;
                 let init = this.$refs.init.value;
-                let queryField = `${table}.${init}`                
+                let queryField = `${transform(table)}.${transform(init)}`                
 
                 let arr1 = this.$refs.boxValue;
                 let arr2 = this.$refs.collection;
                 let arr3 = this.$refs.box;
-                let queryField1 = `${arr2[0].value}.${arr3[0].value}`
-                let queryField2 = `${arr2[1].value}.${arr3[1].value}`
-                let queryField3 = `${arr2[2].value}.${arr3[2].value}`
-                let queryField4 = `${arr2[3].value}.${arr3[3].value}`
+                let queryField1 = `${transform(arr2[0].value)}.${transform(arr3[0].value)}`
+                let queryField2 = `${transform(arr2[1].value)}.${transform(arr3[1].value)}`
+                let queryField3 = `${transform(arr2[2].value)}.${transform(arr3[2].value)}`
+                let queryField4 = `${transform(arr2[3].value)}.${transform(arr3[3].value)}`
                 // let querystring = `${initValue}[${table}表 : ${init}]`
                 //没输入字符警告
                 this.warning(this.$refs.collection,this.$refs.box,this.$refs.boxValue);
@@ -769,11 +801,11 @@ export default {
                     url:'http://10.1.192.118:9901/senior/gjsearch',
                     method:'post',
                     data:{"maplist":[
-                                        {"检索字段":queryField,"检索值":initValue},
-                                        {"检索字段":queryField1,"检索值":arr1[0].value},
-                                        {"检索字段":queryField2,"检索值":arr1[1].value},
-                                        {"检索字段":queryField3,"检索值":arr1[2].value},
-                                        {"检索字段":queryField4,"检索值":arr1[3].value},
+                                        {"检索字段":queryField,"运算符":computeValue,"检索值":initValue},
+                                        {"检索字段":queryField1,"运算符":computeValue1,"检索值":arr1[0].value},
+                                        {"检索字段":queryField2,"运算符":computeValue2,"检索值":arr1[1].value},
+                                        {"检索字段":queryField3,"运算符":computeValue3,"检索值":arr1[2].value},
+                                        {"检索字段":queryField4,"运算符":computeValue4,"检索值":arr1[3].value},
                                     ],
                           "stringList":[relate,relate1,relate2,relate3]          
                                     }

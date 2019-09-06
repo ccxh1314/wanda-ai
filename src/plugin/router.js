@@ -9,6 +9,7 @@ import SearchResult from '../pages/SearchResult.vue';
 // import SearchDetail from '../pages/SearchDetail.vue';
 import LookData from '../pages/LookData.vue';
 import Grouping from '../pages/Grouping.vue';
+import AfterGrouping from '../pages/AfterGrouping.vue';
 import ErrorPage from '../components/ErrorPage.vue';
 
 let routes = [
@@ -19,6 +20,7 @@ let routes = [
     // { path: '/searchDetail/:id', name: 'searchDetail', component: SearchDetail },
     { path: '/lookData', name: 'lookData', component: LookData },
     { path: '/grouping', name: 'grouping', component: Grouping },
+    { path: '/aftergrouping', name: 'aftergrouping', component: AfterGrouping },
     { path: '/', redirect: '/login' },
     { path: '*', component: ErrorPage },
 

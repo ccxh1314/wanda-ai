@@ -18,45 +18,38 @@
             <button class="btn1">从高级中检索</button>
         </div>
         <div class="main-bottom">
-            <div class="search-result">
+            <div class="search-result" style="height:40px;margin-bottom:10px;">
                 <div class="result-left">
-                     <el-checkbox-group v-model="checkList" style="float:left;">
+                     <!-- <el-checkbox-group v-model="checkList" style="float:left;">
                         <el-checkbox label="全选所有" style="margin-right:15px;"></el-checkbox>
                         <el-checkbox label="全选本页" style="margin-right:15px;"></el-checkbox>
-                    </el-checkbox-group>
-                    <select>
-                        <option>展示字段</option>
-                        <option>ID</option>
-                        <option>性别</option>
-                        <option>门诊诊断</option>
-                        <option>入院诊断</option>
-                        <option>出院诊断</option>
-                        <option>主诉</option>
-                        <option>现病史</option>
-                        <option>既往史</option>
-                        <option>家族史</option>
-                    </select>
-                    <select>
-                        <option>排序字段</option>
-                        <option>ID</option>
-                        <option>性别</option>
-                        <option>门诊诊断</option>
-                        <option>入院诊断</option>
-                        <option>出院诊断</option>
-                        <option>主诉</option>
-                        <option>现病史</option>
-                        <option>既往史</option>
-                        <option>家族史</option>
-                    </select>
-                    <select>
-                        <option>排序方式</option>
-                        <option>相关度由大到小</option>
-                        <option>相关度由小到大</option>
-                        <option>数字由大到小</option>
-                        <option>数字由小到大</option>
-                        <option>文字由多到少</option>
-                        <option>文字由少到多</option>
-                    </select>
+                    </el-checkbox-group> -->
+                    <el-select v-model="value1" placeholder="展示字段" style="width:110px;margin-right:5px;">
+                        <el-option
+                        v-for="item in options1"
+                        :key="item.value1"
+                        :label="item.label"
+                        :value="item.value1">
+                        </el-option>
+                    </el-select>
+                    <el-select v-model="value2" placeholder="排序字段" style="width:110px;margin-right:5px;">
+                        <el-option
+                        v-for="item in options2"
+                        :key="item.value2"
+                        :label="item.label"
+                        :value="item.value2">
+                        </el-option>
+                    </el-select>
+                    <el-select v-model="value3" placeholder="排序方式" style="width:110px;margin-right:5px;">
+                        <el-option
+                        v-for="item in options3"
+                        :key="item.value3"
+                        :label="item.label"
+                        :value="item.value3">
+                        </el-option>
+                    </el-select>
+
+                  
                 </div>
                 <div class="result-right">
                     <!-- <a class="a1" id="save-search" style="height:26px;"> -->
@@ -99,17 +92,17 @@
             </div>
             <div id="viewTable" class="view">
                  <el-table
+                    ref="multipleTable"
                     :data="tableData"
                     border
                     highlight-current-row 
-                    max-height="450"
                     style="width: 100%"
                     @selection-change="handleSelectionChange"
                     :row-class-name="tableRowClassName">
-                    <el-table-column prop="select"  type="selection" label="选择" width="100" height="120" align="center">
-                        <template slot-scope="scope">
+                    <el-table-column prop="select" type="selection" width="100" height="120" align="center">
+                        <!-- <template slot-scope="scope">
                             <el-checkbox v-model="scope.row.checked" @change="getdata(scope.row)"></el-checkbox> 
-                        </template>
+                        </template> -->
                     </el-table-column>
                     <el-table-column 
                      prop="id" label="ID" width="100" align="center">
@@ -219,7 +212,7 @@ export default {
     name:'searchResult',
     data() {
       return {
-        multipleSelection:[],
+        multipleSelection: [],
         currentData:[],
         SearchData:[],
         tableData: [],
@@ -245,8 +238,81 @@ export default {
         visible: false,
         getA : false,
         row : '',
-        value:''
+        value:'',
+        dataId:'',
         // SearchData:[]
+         options1: [{
+          value1: 'ID',
+          label: 'ID'
+        }, {
+          value1: '性别',
+          label: '性别'
+        }, {
+          value1: '门诊诊断',
+          label: '门诊诊断'
+        }, {
+          value1: '出院诊断',
+          label: '出院诊断'
+        }, {
+          value1: '主诉',
+          label: '主诉'
+        }, {
+          value1: '现病史',
+          label: '现病史'
+        }, {
+          value1: '既往史',
+          label: '既往史'
+        }, {
+          value1: '家族史',
+          label: '家族史'
+        }],
+        value1:'',
+         options2: [{
+          value2: 'ID',
+          label: 'ID'
+        }, {
+          value2: '性别',
+          label: '性别'
+        }, {
+          value2: '门诊诊断',
+          label: '门诊诊断'
+        }, {
+          value2: '出院诊断',
+          label: '出院诊断'
+        }, {
+          value2: '主诉',
+          label: '主诉'
+        }, {
+          value2: '现病史',
+          label: '现病史'
+        }, {
+          value2: '既往史',
+          label: '既往史'
+        }, {
+          value2: '家族史',
+          label: '家族史'
+        }],
+        value2:'',
+         options3: [{
+          value3: '相关度由大到小',
+          labe3: '相关度由大到小'
+        }, {
+          value3: '相关度由小到大',
+          label: '相关度由小到大'
+        }, {
+          value3: '数字由大到小',
+          label: '数字由大到小'
+        }, {
+          value3: '数字由小到大',
+          label: '数字由小到大'
+        }, {
+          value3: '文字由多到少',
+          label: '文字由多到少'
+        }, {
+          value3: '文字由少到多',
+          label: '文字由少到多'
+        }],
+        value3:'',
       }
     },
      methods: {
@@ -283,26 +349,27 @@ export default {
                 for(var i=0;i<arr.length;i++){
                 this.tableData.push({
                     // number:i+1,
-                    id:SearchData[i].hzjbxx.id,
-                    name:SearchData[i].hzjbxx.name,
-                    birthDate:SearchData[i].zybasy.data,
-                    sex:SearchData[i].hzjbxx.sex,
-                    qutpatient:SearchData[i].zybasy.mjzzdmc,
-                    admission:SearchData[i].ryjl.xbs,
-                    discharge:SearchData[i].cyxj.cyszz,
-                    departments:SearchData[i].ryjl.ksmc,
-                    present:SearchData[i].ryjl.zkqk,
-                    past:SearchData[i].ryjl.zs,
-                    family:SearchData[i].jbjkxx.jzs,
+                    id:arr[i].hzjbxx.id,
+                    name:arr[i].hzjbxx.name,
+                    birthDate:arr[i].zybasy.data,
+                    sex:arr[i].hzjbxx.sex,
+                    qutpatient:arr[i].zybasy.mjzzdmc,
+                    admission:arr[i].ryjl.xbs,
+                    discharge:arr[i].cyxj.cyszz,
+                    departments:arr[i].ryjl.ksmc,
+                    present:arr[i].ryjl.zkqk,
+                    past:arr[i].ryjl.zs,
+                    family:arr[i].jbjkxx.jzs,
                     // family:this.reg(SearchData[i].jbjkxx.jzs),
-                    treatment:SearchData[i].cyxj.zlgcms,
+                    treatment:arr[i].cyxj.zlgcms,
                     inspect:'血红蛋白',
                     CheckValue:'80 0.8',
                     CheckTime:'2016.03.11-2016.03.17',
-                    hospital:SearchData[i].zybasy.yymc,
+                    hospital:arr[i].zybasy.yymc,
                     time:'2016.03.11/2016.03.17',
                     // operation:'详情'
                 })
+                loading.close()
         }
             this.tableCopyTableList = this.tableData
             this.tableData = this.paging(this.size, this.index);
@@ -408,15 +475,11 @@ export default {
             this.tableCopyTableList = this.tableData
             this.tableData = this.paging(this.size, this.index);
       },
-      //选择所有
+      //勾选时拿数据
         handleSelectionChange(val) {
             this.multipleSelection = val;
             // console.log(this.multipleSelection)
-        },
-        //拿当前这一行的数据
-        getdata(row){
-            this.currentData.push(row)
-            // console.log(this.currentData)
+             this.currentData = this.multipleSelection;
         },
         //创建数据集
         addData(){
@@ -428,7 +491,8 @@ export default {
                 method:'post',
                 data:{"dataDescribe":this.form.desc,"dataName":this.form.region,ids:this.ids}
             }).then(res => {
-                // console.log(res)
+                console.log(res)
+                this.dataId = res.data.id;
                 if(res.status == 200){
                         this.innerVisible = true;
                 }
@@ -439,7 +503,7 @@ export default {
             // console.log(this.form.region)
             // console.log(this.ids)
              this.$router.push({path:'/lookData',query:{name:'searchResult',
-             desc:this.form.desc,region:this.form.region,data:this.currentData}}) 
+             desc:this.form.desc,region:this.form.region,data:this.currentData,dataId:this.dataId}}) 
         },
         //匹配搜索关键字
         reg(str){
@@ -482,3 +546,12 @@ export default {
 <style scoped src="../assets/css/top.css"></style>
 <style scoped src="../assets/css/layer.css"></style>
 <style scoped src="../assets/css/perfect-scrollbar.css"></style>
+<style scoped>
+  .el-dropdown-link {
+    cursor: pointer;
+    color: #409EFF;
+  }
+  .el-icon-arrow-down {
+    font-size: 12px;
+  }
+</style>

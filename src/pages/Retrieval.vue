@@ -173,9 +173,7 @@ export default {
                     this.$router.push({path:'/searchResult',query:{name:'retrieval',data:this.SearchData,value:this.querystring}})
                     loading.close();
                 }
-
             })
-            
         }
     },
     created(){

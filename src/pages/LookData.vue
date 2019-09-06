@@ -175,28 +175,29 @@
                                     <li
                                         v-for="(item,index) of defaultGroup"
                                         :key = "index"
+                                        
                                     >
                                         <label>{{item.name}}：</label>
-                                        <input type="" placeholder="请命名"/>
+                                        <input ref="groupName" type="" placeholder="请命名"/>
                                     </li>
                             </ul>
                             </div>
                             <div class="con-ratio">
                                     <span>组间数据比例</span>
                                     <p style="width:100%;text-indent:27px;">
-                                        <input type="text" />&nbsp;&nbsp;:&nbsp;&nbsp;<input type="text" />
+                                        <input type="text" v-model="rate1" />&nbsp;&nbsp;:&nbsp;&nbsp;<input type="text" v-model="rate2" />
                                         <span 
                                         style="width:200px;text-indent:10px;display:inline;"
                                           v-for="(item,index) in arr"
                                           :key = "index"
-                                        >&nbsp;&nbsp;{{item.colon}}&nbsp;&nbsp;<input type="text"/></span>
+                                        >&nbsp;&nbsp;{{item.colon}}&nbsp;&nbsp;<input ref="groupRate" type="text"/></span>
                                     </p>
                                     <div>是否打乱数据顺序？　　是 <i class="i-selected"></i>　否 <i class="i-selected"></i></div>
                             </div>
                         </div>
                     </div>
                     <div class="div3">
-                        <button class="btn1">确　定</button>
+                        <button class="btn1" @click="submit">确　定</button>
                     </div>
                 </div>
             </div>
@@ -228,6 +229,8 @@ export default {
             label: '随机分组'
             }],
             value:'',
+            rate1:'',
+            rate2:'',
             defaultGroup:[{name:"组一",value:"请命名"},{name:"组二",value:"请命命名"}],
             arr:[]
         }
@@ -254,7 +257,7 @@ export default {
         if(this.value == "随机分组"){
             this.alertbox = true;
             this.shadow = true;
-            console.log(1)
+            // console.log(1)
         }
      },
      close(){
@@ -273,9 +276,45 @@ export default {
         this.defaultGroup.length > 2 && this.defaultGroup.pop()
         this.arr.pop()
      },
+     submit(){
+        // console.log(this.$refs.groupName)
+        // console.log(this.$refs.groupRate)
+        // console.log(this.$refs.groupRate)
+        console.log(this.$route.query.dataId)
+        let groupNameArr = [];
+        this.$refs.groupName.map((item,index,arr)=>{
+                groupNameArr.push(item.value)
+        })
+            let groupRateString = '';
+        if(this.$refs.groupRate && this.$refs.groupRate.length > 0){
+            let str = ''
+            this.$refs.groupRate.map((item,index,arr)=>{
+                    str = str + ':' + item.value;
+            })
+          groupRateString = groupRateString + this.rate1 + ':' + this.rate2 + str;
+        }
+        if(!this.$refs.groupRate || this.$refs.groupRate.length == 0){
+          groupRateString = groupRateString + this.rate1 + ':' + this.rate2;
+        }
+        // console.log(groupRateString)
+        axios({
+            url:'http://10.1.192.118:9901/data/randomgroup',
+            method:'post',
+            data:{
+                //  "dataName": this.$route.query.region,
+                 "dataId":this.$route.query.dataId,
+                 "groupName":groupNameArr,
+                 "str": groupRateString
+            }
+        }).then(res => {
+            console.log(res)
+        })
+        
+     },
     },
     created(){
         let queryData = this.$route.query.data;
+        // let dataId = this.$route.query.dataId;
         // console.log(queryData)
         for(let i=0;i<queryData.length;i++){
             this.tableData.push({

@@ -80,27 +80,28 @@
                 }).then(res => {
                     // console.log(res)
                     if(this.username == '' || this.password == ''){
-                        alert("账号或密码不能为空")
+                        this.$message.error('账号名或密码不能为空');
                         return
                     }
                     if(res.data.token && res.data.tokenHead){
-                        const loading = this.$loading({
-                         lock: true,
-                         text: '加载中',
-                         spinner: 'el-icon-loading',
-                         background: 'rgba(0, 0, 0, 0.7)'
-                         });
                         let user_token  = [{
                             "tokenHead":res.data.tokenHead,
                             "token":res.data.token
                         }]
                         localStorage.setItem("user",JSON.stringify(user_token))
-                        this.message = "登录成功"
+                        this.$message({
+                            message: '登录成功',
+                            type: 'success',
+                            duration:1000
+                        });
+                        setTimeout(()=>{
                             this.$router.push('/retrieval')
-                            loading.close();
+                        },1000)
                     }else{
-                        this.message = res.data
+                        this.$message.error(res.data) 
                     }
+                }).catch(err => {
+                    // console.log(err)
                 })
 
                 if(this.checked){

@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // axios.defaults.withCredentials = false;
 // axios.defaults.headers.post['Content-Type'] = "application/x-www-form-urlencoded";
-// axios.defaults.headers.post['Content-Type'] = 'application/json';
+axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 //请求时
 // axios.interceptors.request.use(function(config) {
@@ -26,6 +26,18 @@ import axios from 'axios';
 // })
 
 //响应时
+axios.interceptors.response.use(response => {
+    // console.log(response)
+    return response
+}, err => {
+    // console.log(err.response);
+    switch (err.response.status) {
+        case 403:
+            // console.log(403)
+            alert("登录时403:是密码错误")
+    }
+    return Promise.reject(err)
+})
 
 
 
